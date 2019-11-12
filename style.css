@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Big Shoulders Text', cursive;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+    max-height: auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(to right, #734b6d, #42275a);
+    user-select: none;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+}
+
+.picker {
+    display: flex;
+    width: 1110px;
+    padding: 20px;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    background: #fff;
+}
+
+.picker-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 20px;
+    border: 1px solid #B10DC9;
+    border-radius: 3px;
+    color: #3D9970;
+    cursor: pointer;
+}
+
+.selected-item {
+    background: #B10DC9;
+    color: #fff
+}
+
+.picker-list-week {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100px;
+    padding: 10px 10px 10px 0;
+}
