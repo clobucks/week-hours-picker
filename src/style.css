@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+.week__hours__picker_node {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+.week__hours__picker_container {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+
+    position: absolute;
+    min-width: calc(24px * 26px + 100px);
+    height: calc(8 * 26px);
+    background-color: #FFFFFF;
+    z-index: 100;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.week__hours__picker_aside {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
+
+    flex-shrink: 0;
+
+    -ms-align-items: center;
+    align-items: center;
+    min-width: 100px;
+
+    padding-top: 26px;
+}
+
+.week__hours__picker_grid {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+
+    flex-grow: 1;
+    outline: 1px solid green;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
+}
+
+.week__hours__picker_header {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+
+    height: 26px;
+}
+
+.week__hours__picker_header-hour {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+
+    -ms-align-items: center;
+    align-items: center;
+    height: 100%;
+    outline: 1px solid green;
+    width: 26px;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.week__hours__picker_body {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
+}
+
+.week__hours__picker_day {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+
+    color: #333;
+
+    height: 26px;
+    -ms-align-items: center;
+    align-items: center;
+
+
+    outline: 1px solid blue;
+    width: 100%;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.week__hours__picker_row {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+
+    height: 26px;
+    -ms-align-items: center;
+    align-items: center;
+}
+
+
+.week__hours__picker_hour {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+
+    -ms-align-items: center;
+    align-items: center;
+    height: 100%;
+    outline: 1px solid red;
+    width: 26px;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.week__hours__picker_hour___selected {
+    background-color: red;
+}
+
+.week__hours__picker_input {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}

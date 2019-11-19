@@ -1,0 +1,17 @@
+{
+    "plugins": ["jest"],
+    "extends": "airbnb-base",
+    "rules": {
+        "indent": ["error", 4],
+        "semi": ["error", "never"],
+        "no-param-reassign": 0,
+        "prefer-object-spread": 0,
+        "no-plusplus": 0,
+        "no-nested-ternary": 0
+    },
+    "env": {
+        "jest/globals": true,
+        "es6": true,
+        "browser": true,
+    }
+}
