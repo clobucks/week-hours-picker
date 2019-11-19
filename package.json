@@ -7,8 +7,7 @@
   "license": "MIT",
   "scripts": {
     "format": "prettier-eslint '**/*.{js}' --write",
-    "lint": "eslint . --fix",
-    "test": "jest ."
+    "lint": "eslint . --fix"
   },
   "devDependencies": {
     "eslint": "^6.6.0",
@@ -16,15 +15,13 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^23.0.4",
     "husky": "^3.1.0",
-    "jest": "^24.9.0",
     "lint-staged": "^9.4.3",
     "prettier-eslint": "^9.0.1",
     "prettier-eslint-cli": "^5.0.0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint-staged",
-      "pre-push": "yarn test"
+      "pre-commit": "yarn lint-staged"
     }
   },
   "lint-staged": {
