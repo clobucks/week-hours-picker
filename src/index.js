@@ -234,13 +234,6 @@ const css = `
 `
 
 const library = (node, props, callback = () => {}, options = {}) => {
-    const style = document.createElement('style')
-
-    style.type = 'text/css'
-    style.innerHTML = css
-
-    document.getElementsByTagName('head')[0].appendChild(style)
-
     if (!node) {
         throw new Error('Node element is not defined')
     }
@@ -258,6 +251,21 @@ const library = (node, props, callback = () => {}, options = {}) => {
                     4: 'Friday',
                     5: 'Saturday',
                     6: 'Sunday',
+                },
+
+                classes: {
+                    aside: '',
+                    body: '',
+                    container: '',
+                    day: '',
+                    grid: '',
+                    header: '',
+                    headerHour: '',
+                    hour: '',
+                    input: '',
+                    node: '',
+                    row: '',
+                    selected: '',
                 },
             },
             options,
@@ -282,10 +290,19 @@ const library = (node, props, callback = () => {}, options = {}) => {
         input: null,
     }
 
+    const style = document.createElement('style')
+
+    style.type = 'text/css'
+    style.innerHTML = css
+
     factory.getAside = () => {
         const element = document.createElement('div')
 
         element.classList.add(classnames.aside)
+
+        if (factory.options.classes && factory.options.classes.aside) {
+            element.classList.add(factory.options.classes.aside)
+        }
 
         Object.keys(factory.options.days)
             .map((key) => factory.options.days[key])
@@ -293,6 +310,11 @@ const library = (node, props, callback = () => {}, options = {}) => {
                 const dayElement = document.createElement('div')
 
                 dayElement.classList.add(classnames.day)
+
+                if (factory.options.classes && factory.options.classes.day) {
+                    dayElement.classList.add(factory.options.classes.day)
+                }
+
                 dayElement.innerHTML = day
 
                 dayElement.addEventListener('click', () => {
@@ -310,6 +332,10 @@ const library = (node, props, callback = () => {}, options = {}) => {
 
         element.classList.add(classnames.body)
 
+        if (factory.options.classes && factory.options.classes.body) {
+            element.classList.add(factory.options.classes.body)
+        }
+
         Object.keys(factory.options.days).forEach((index) => {
             element.appendChild(factory.getRow(index))
         })
@@ -322,6 +348,10 @@ const library = (node, props, callback = () => {}, options = {}) => {
 
         element.classList.add(classnames.container)
 
+        if (factory.options.classes && factory.options.classes.container) {
+            element.classList.add(factory.options.classes.container)
+        }
+
         element.append(factory.getAside())
         element.append(factory.getGrid())
 
@@ -332,6 +362,10 @@ const library = (node, props, callback = () => {}, options = {}) => {
         const element = document.createElement('div')
 
         element.classList.add(classnames.grid)
+
+        if (factory.options.classes && factory.options.classes.grid) {
+            element.classList.add(factory.options.classes.grid)
+        }
 
         element.appendChild(factory.getHeader())
         element.appendChild(factory.getBody())
@@ -344,10 +378,19 @@ const library = (node, props, callback = () => {}, options = {}) => {
 
         element.classList.add(classnames.header)
 
+        if (factory.options.classes && factory.options.classes.header) {
+            element.classList.add(factory.options.classes.header)
+        }
+
         for (let i = 0; i < 24; i++) {
             const hour = document.createElement('span')
 
             hour.classList.add(classnames.headerHour)
+
+            if (factory.options.classes && factory.options.classes.headerHour) {
+                hour.classList.add(factory.options.classes.headerHour)
+            }
+
             hour.innerHTML = i
 
             hour.addEventListener('click', () => {
@@ -366,13 +409,25 @@ const library = (node, props, callback = () => {}, options = {}) => {
 
         element.classList.add(classnames.row)
 
+        if (factory.options.classes && factory.options.classes.row) {
+            element.classList.add(factory.options.classes.row)
+        }
+
         for (let i = 0; i < 24; i++) {
             const hour = document.createElement('span')
 
             hour.classList.add(classnames.hour)
 
+            if (factory.options.classes && factory.options.classes.hour) {
+                hour.classList.add(factory.options.classes.hour)
+            }
+
             if (state[index] && state[index].includes(i)) {
                 hour.classList.add(classnames.selected)
+
+                if (factory.options.classes && factory.options.classes.active) {
+                    hour.classList.add(factory.options.classes.active)
+                }
             }
 
             hour.innerHTML = i
@@ -526,6 +581,11 @@ const library = (node, props, callback = () => {}, options = {}) => {
 
     node.innerHTML = ''
     node.appendChild(DOM)
+
+    const head = document.getElementsByTagName('head')[0]
+    const headStyle = document.getElementsByTagName('style')[0]
+
+    head.insertBefore(style, headStyle)
 
     if (node.dataset.name) {
         factory.input = document.createElement('input')

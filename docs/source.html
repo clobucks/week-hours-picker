@@ -27,6 +27,18 @@
 
             height: 60vh;
         }
+
+        .custom_container_classname {
+            -webkit-flex-direction: row-reverse;
+            -moz-flex-direction: row-reverse;
+            -ms-flex-direction: row-reverse;
+            -o-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+        }
+
+        .custom_selected_classname, .custom_selected_classname:hover {
+            background-color: cyan;
+        }
     </style>
 </head>
 <body>
@@ -45,9 +57,9 @@
 
             const resultNode = document.querySelector('#result')
 
-            window.weekHoursPicker(node, state, (model) => {
+            weekHoursPicker(node, state, (model) => {
                 resultNode.innerHTML = JSON.stringify(model)
-            })
+            }, { classes: { container: 'custom_container_classname', active: 'custom_selected_classname' } })
         })()
     </script>
 </body>

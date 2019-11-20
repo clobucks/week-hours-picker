@@ -35,8 +35,9 @@ Hours picker by week day
                 console.log(newState)
             }
 
-            // custom days names (it's default values)
             const options = {
+
+                // custom days names (it's default values)
                 days: {
                     0: 'Monday',
                     1: 'Tuesday',
@@ -45,7 +46,23 @@ Hours picker by week day
                     4: 'Friday',
                     5: 'Saturday',
                     6: 'Sunday',
-                }
+                },
+                
+                // custom class names for dom elements (it's default values)
+                classes: {
+                    active: '',
+                    aside: '',
+                    body: '',
+                    container: '',
+                    day: '',
+                    grid: '',
+                    header: '',
+                    headerHour: '',
+                    hour: '',
+                    input: '',
+                    node: '',
+                    row: '',
+                },
             }
 
             weekHoursPicker(
