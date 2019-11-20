@@ -6,5 +6,9 @@
         5: [4, 9, 10, 20],
     }
 
-    window.weekHoursPicker(node, state)
+    function handleStateChange(newState) {
+        console.log(newState)
+    }
+
+    window.weekHoursPicker(node, state, handleStateChange)
 })()
