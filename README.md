@@ -12,12 +12,12 @@ Hours picker by week day
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="https://unpkg.com/week-hours-picker@1.0.2/src/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/week-hours-picker@latest/src/style.css">
 </head>
 <body>
     <div id="input" data-name="name"></div>
 
-    <script src="https://unpkg.com/week-hours-picker@1.0.2/src/index.js"></script>
+    <script src="https://unpkg.com/week-hours-picker@latest/src/index.js"></script>
     <script>
         (() => {
             const node = document.querySelector('#input')
