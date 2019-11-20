@@ -1,10 +1,20 @@
 {
   "name": "week-hours-picker",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Mathstring tools",
   "main": "src/index.js",
   "repository": "git@github.com:clobucks/week-hours-picker.git",
   "license": "MIT",
+  "keywords": [
+    "schedule",
+    "time-picker",
+    "week-time-picker"
+  ],
+  "bugs": "https://github.com/clobucks/week-hours-picker/issues",
+  "homepage": "https://clobucks.github.io/week-hours-picker",
+  "contributors": [
+    "iknpx <iknpx@aol.com> (https://github.com/iknpx)"
+  ],
   "scripts": {
     "format": "prettier-eslint '**/*.{js}' --write",
     "lint": "eslint . --fix"
