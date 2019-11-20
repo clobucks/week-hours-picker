@@ -17,13 +17,11 @@ Hours picker by week day
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://unpkg.com/week-hours-picker@latest/src/style.css">
 </head>
 <body>
     <div id="input" data-name="form-name"></div>
 
     <script src="https://unpkg.com/week-hours-picker@latest/src/index.js"></script>
-    
     <script>
         (() => {    
             // initialState { [row]: [hours] }
