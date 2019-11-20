@@ -48,7 +48,7 @@ Hours picker by week day
                 }
             }
 
-            window.weekHoursPicker(
+            weekHoursPicker(
                 document.querySelector('#input'), // required
                 state, // optional
                 handleStateChange, // optional
@@ -68,7 +68,7 @@ Hours picker by week day
 import weekHoursPicker from 'week-hours-picker'
 import 'week-hours-picker/src/style.css'
 
-window.weekHoursPicker(
+weekHoursPicker(
     document.querySelector('#input'), // required
     state, // optional
     handleStateChange, // optional
