@@ -1,15 +1,15 @@
 [![npm version](https://badge.fury.io/js/week-hours-picker.svg)](https://badge.fury.io/js/week-hours-picker)
 [![Downloads](http://img.shields.io/npm/dm/week-hours-picker.svg?style=flat)](https://npmjs.org/package/week-hours-picker)
 
-# week-hours-picker 
+# week-hours-picker
 
 Hours picker by week day
 
-### Usage
+## Usage
 
 - set `data-name` attr for getting value with form submiting
 
-##### UMD Module
+### UMD Module
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -60,9 +60,9 @@ Hours picker by week day
 </html>
 ```
 
-##### ESM Module
+### ESM Module
 
-- for useing as ESM module you should setup css loaders for your bundler and import default `*.css` theme
+- for use as ESM module you should setup css loaders for your bundler and import default `*.css` theme
 
 ```javascript
 import weekHoursPicker from 'week-hours-picker'
