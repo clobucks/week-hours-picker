@@ -5,6 +5,8 @@
         }
 
         const factory = {
+            state: {},
+
             options: Object.assign(
                 {
                     days: {
@@ -20,8 +22,6 @@
                 options,
             ),
 
-            state: props || {},
-
             getAside: () => {},
             getBody: () => {},
             getContainer: () => {},
@@ -33,17 +33,122 @@
             handleHeaderClick: () => {},
             handleHourClick: () => {},
 
+            getState: (state) => state,
+            mapState: (state) => state,
+
             render: () => {},
+        }
+
+        factory.getAside = () => {
+            const element = document.createElement('div')
+
+            element.classList.add('week__hours__picker_aside')
+
+            Object.keys(factory.options.days)
+                .map((key) => factory.options.days[key])
+                .forEach((day, index) => {
+                    const dayElement = document.createElement('div')
+
+                    dayElement.classList.add('week__hours__picker_day')
+                    dayElement.innerHTML = day
+
+                    dayElement.addEventListener('click', () => {
+                        factory.handleDayClick(index)
+                    })
+
+                    element.appendChild(dayElement)
+                })
+
+            return element
+        }
+
+        factory.getBody = () => {
+            const element = document.createElement('div')
+
+            element.classList.add('week__hours__picker_body')
+
+            Object.keys(factory.options.days).forEach((index) => {
+                element.appendChild(factory.getRow(index))
+            })
+
+            return element
+        }
+
+        factory.getContainer = () => {
+            const element = document.createElement('div')
+
+            element.classList.add('week__hours__picker_container')
+
+            element.append(factory.getAside())
+            element.append(factory.getGrid())
+
+            return element
+        }
+
+        factory.getGrid = () => {
+            const element = document.createElement('div')
+
+            element.classList.add('week__hours__picker_grid')
+
+            element.appendChild(factory.getHeader())
+            element.appendChild(factory.getBody())
+
+            return element
+        }
+
+        factory.getHeader = () => {
+            const element = document.createElement('div')
+
+            element.classList.add('week__hours__picker_header')
+
+            for (let i = 0; i < 24; i++) {
+                const hour = document.createElement('div')
+
+                hour.classList.add('week__hours__picker_header-hour')
+                hour.innerHTML = i
+
+                hour.addEventListener('click', () => {
+                    factory.handleHeaderClick(i)
+                })
+
+                element.appendChild(hour)
+            }
+
+            return element
+        }
+
+        factory.getRow = (index) => {
+            const { state } = factory
+            const element = document.createElement('div')
+
+            element.classList.add('week__hours__picker_row')
+
+            for (let i = 0; i < 24; i++) {
+                const hour = document.createElement('div')
+
+                hour.classList.add('week__hours__picker_hour')
+
+                if (state[index] && state[index].includes(i)) {
+                    hour.classList.add('week__hours__picker_hour___selected')
+                }
+
+                hour.innerHTML = i
+
+                hour.addEventListener('click', () => {
+                    factory.handleHourClick(index, i)
+                })
+
+                element.appendChild(hour)
+            }
+
+            return element
         }
 
         factory.handleDayClick = (day) => {
             const { state } = factory
 
-            factory.state = Array.from(
-                { length: Object.keys(factory.options.days).length },
-                (_, index) => index,
-            ).reduce((result, row) => {
-                if (row === day) {
+            factory.state = Object.keys(state).reduce((result, row) => {
+                if (row.toString() === day.toString()) {
                     return {
                         ...result,
                         [row]:
@@ -65,20 +170,30 @@
         factory.handleHeaderClick = (hour) => {
             const { state } = factory
 
-            factory.state = Array.from(
-                { length: Object.keys(factory.options.days).length + 1 },
-                (_, index) => index,
-            ).reduce(
-                (result, index) => ({
+            const isFull = Object.keys(state)
+                .map((_) => state[_])
+                .filter((_) => _.includes(hour))
+
+            factory.state = Object.keys(state).reduce((result, index) => {
+                if (isFull.length !== Object.keys(state).length) {
+                    return {
+                        ...result,
+                        [index]: !state[index].includes(hour)
+                            ? [...state[index], hour]
+                            : [...state[index]],
+                    }
+                }
+
+                const hourIndex = state[index].findIndex((_) => _.toString() === hour.toString())
+
+                return {
                     ...result,
-                    [index]: state[index]
-                        ? state[index].includes(hour)
-                            ? state[index]
-                            : [...state[index], hour]
-                        : [hour],
-                }),
-                state,
-            )
+                    [index]: [
+                        ...state[index].slice(0, hourIndex),
+                        ...state[index].slice(hourIndex + 1),
+                    ],
+                }
+            }, state)
 
             factory.render()
         }
@@ -125,110 +240,27 @@
             factory.render()
         }
 
-        factory.getAside = () => {
-            const element = document.createElement('div')
+        factory.getState = (state) => Array.from(
+            { length: Object.keys(factory.options.days).length + 1 },
+            (_, index) => index,
+        ).reduce(
+            (result, index) => ({
+                ...result,
+                [index]: state[index] ? [...state[index]] : [],
+            }),
+            {},
+        )
 
-            element.classList.add('week__hours__picker_aside')
+        factory.mapState = (state) => Object.keys(state).reduce(
+            (result, key) => ({
+                ...result,
+                ...(state[key].length && { [key]: state[key] }),
+            }),
+            {},
+        )
 
-            Object.keys(factory.options.days)
-                .map((key) => factory.options.days[key])
-                .forEach((day, index) => {
-                    const dayElement = document.createElement('div')
-
-                    dayElement.classList.add('week__hours__picker_day')
-                    dayElement.innerHTML = day
-
-                    dayElement.addEventListener('click', () => {
-                        factory.handleDayClick(index)
-                    })
-
-                    element.appendChild(dayElement)
-                })
-
-            return element
-        }
-
-        factory.getRow = (index) => {
-            const { state } = factory
-            const element = document.createElement('div')
-
-            element.classList.add('week__hours__picker_row')
-
-            for (let i = 0; i < 24; i++) {
-                const hour = document.createElement('div')
-
-                hour.classList.add('week__hours__picker_hour')
-
-                if (state[index] && state[index].includes(i)) {
-                    hour.classList.add('week__hours__picker_hour___selected')
-                }
-
-                hour.innerHTML = i
-
-                hour.addEventListener('click', () => {
-                    factory.handleHourClick(index, i)
-                })
-
-                element.appendChild(hour)
-            }
-
-            return element
-        }
-
-        factory.getHeader = () => {
-            const element = document.createElement('div')
-
-            element.classList.add('week__hours__picker_header')
-
-            for (let i = 0; i < 24; i++) {
-                const hour = document.createElement('div')
-
-                hour.classList.add('week__hours__picker_header-hour')
-                hour.innerHTML = i
-
-                hour.addEventListener('click', () => {
-                    factory.handleHeaderClick(i)
-                })
-
-                element.appendChild(hour)
-            }
-
-            return element
-        }
-
-        factory.getBody = () => {
-            const element = document.createElement('div')
-
-            element.classList.add('week__hours__picker_body')
-
-            Object.keys(factory.options.days).forEach((index) => {
-                element.appendChild(factory.getRow(index))
-            })
-
-            return element
-        }
-
-        factory.getGrid = () => {
-            const element = document.createElement('div')
-
-            element.classList.add('week__hours__picker_grid')
-
-            element.appendChild(factory.getHeader())
-            element.appendChild(factory.getBody())
-
-            return element
-        }
-
-        factory.getContainer = () => {
-            const element = document.createElement('div')
-
-            element.classList.add('week__hours__picker_container')
-
-            element.append(factory.getAside())
-            element.append(factory.getGrid())
-
-            return element
-        }
+        factory.state = factory.getState(props || {})
+        callback(factory.mapState(factory.state))
 
         let DOM = factory.getContainer(factory.state)
 
@@ -242,7 +274,7 @@
 
             factory.input.setAttribute('value', JSON.stringify(state))
 
-            callback(factory.state)
+            callback(factory.mapState(factory.state))
         }
 
         node.classList.add('week__hours__picker_node')
@@ -256,6 +288,6 @@
 
         node.appendChild(factory.input)
 
-        factory.input.setAttribute('value', JSON.stringify(factory.state))
+        factory.input.setAttribute('value', JSON.stringify(factory.mapState(factory.state)))
     }
 })(document, window)

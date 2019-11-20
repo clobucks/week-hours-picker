@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>week-hours-picker</title>
     <link rel="stylesheet" href="../src/style.css">
 
     <style>
@@ -32,11 +32,27 @@
     </style>
 </head>
 <body>
-    <div id="input" data-name="name">123</div>
-
+    <div id="input" data-name="name"></div>
     <pre id="result"></pre>
 
     <script src="../src/index.js"></script>
-    <script src="demo.js"></script>
+    <script>
+        (() => {
+            const node = document.querySelector('#input')
+
+            const state = {
+                0: [1, 2, 5, 10],
+                5: [4, 9, 10, 20],
+            }
+
+            const resultNode = document.querySelector('#result')
+
+            resultNode.innerHTML = JSON.stringify(state)
+
+            window.weekHoursPicker(node, state, (model) => {
+                resultNode.innerHTML = JSON.stringify(model)
+            })
+        })()
+    </script>
 </body>
 </html>

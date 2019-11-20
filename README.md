@@ -6,33 +6,53 @@
 Hours picker by week day
 
 ### Usage
+
+- set `data-name` attr for getting value with form submiting
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
     <link rel="stylesheet" href="https://unpkg.com/week-hours-picker@latest/src/style.css">
 </head>
 <body>
-    <div id="input" data-name="name"></div>
+    <div id="input" data-name="form-name"></div>
 
     <script src="https://unpkg.com/week-hours-picker@latest/src/index.js"></script>
-    <script>
-        (() => {
-            const node = document.querySelector('#input')
     
-            // [row]: [hours]
+    <script>
+        (() => {    
+            // initialState { [row]: [hours] }
             const state = {
                 0: [1, 2, 5, 10],
                 5: [4, 9, 10, 20],
             }
-
+            
+            // change callback
             function handleStateChange(newState) {
                 console.log(newState)
             }
 
-            window.weekHoursPicker(node, state, handleStateChange)
+            // custom days names (it's default values)
+            const options = {
+                days: {
+                    0: 'Monday',
+                    1: 'Tuesday',
+                    2: 'Wednesday',
+                    3: 'Thursday',
+                    4: 'Friday',
+                    5: 'Saturday',
+                    6: 'Sunday',
+                }
+            }
+
+            window.weekHoursPicker(
+                document.querySelector('#input'), // required
+                state, // optional
+                handleStateChange, // optional
+                options, // optional
+            )
         })()
     </script>
 </body>

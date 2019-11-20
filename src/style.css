@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap&subset=cyrillic');
 
 .week__hours__picker_node {
     font-family: 'Roboto', sans-serif;
@@ -164,10 +164,11 @@
     height: 26px;
     -ms-align-items: center;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .week__hours__picker_row:not(:last-child) {
-    border-bottom: 1px solid #EEEEEE;
+    border-bottom: 1px solid #DDDDDD;
 }
 
 .week__hours__picker_hour {
@@ -189,12 +190,18 @@
     font-size: 12px;
 }
 
-.week__hours__picker_hour:not(:last-child) {
-    border-right: 1px solid #EEEEEE;
+.week__hours__picker_hour:hover {
+    background-color: #EEEEEE;
 }
 
-.week__hours__picker_hour___selected {
+.week__hours__picker_hour:not(:last-child) {
+    border-right: 1px solid #DDDDDD;
+}
+
+.week__hours__picker_hour___selected, .week__hours__picker_hour___selected:hover {
     background-color: #DDDDDD;
+    color: #333333;
+    font-weight: 500;
 }
 
 .week__hours__picker_input {
