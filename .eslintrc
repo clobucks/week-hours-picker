@@ -7,6 +7,7 @@
         "no-param-reassign": 0,
         "prefer-object-spread": 0,
         "no-plusplus": 0,
+        "no-empty": 0,
         "no-nested-ternary": 0
     },
     "env": {

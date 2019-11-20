@@ -9,6 +9,7 @@ Hours picker by week day
 
 - set `data-name` attr for getting value with form submiting
 
+##### UMD Module
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -57,4 +58,20 @@ Hours picker by week day
     </script>
 </body>
 </html>
+```
+
+##### ESM Module
+
+- for useing as ESM module you should setup css loaders for your bundler and import default `*.css` theme
+
+```javascript
+import weekHoursPicker from 'week-hours-picker'
+import 'week-hours-picker/src/style.css'
+
+window.weekHoursPicker(
+    document.querySelector('#input'), // required
+    state, // optional
+    handleStateChange, // optional
+    options, // optional
+)
 ```
