@@ -64,11 +64,8 @@ Hours picker by week day
 
 ### ESM Module
 
-- for use as ESM module you should setup css loaders for your bundler and import default `*.css` theme
-
 ```javascript
 import weekHoursPicker from 'week-hours-picker'
-import 'week-hours-picker/src/style.css'
 
 weekHoursPicker(
     document.querySelector('#input'), // required

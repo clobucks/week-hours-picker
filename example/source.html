@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>week-hours-picker</title>
-    <link rel="stylesheet" href="../src/style.css">
-
     <style>
         body {
             display: -webkit-flex;
@@ -46,8 +44,6 @@
             }
 
             const resultNode = document.querySelector('#result')
-
-            resultNode.innerHTML = JSON.stringify(state)
 
             window.weekHoursPicker(node, state, (model) => {
                 resultNode.innerHTML = JSON.stringify(model)

@@ -1,4 +1,246 @@
+const getClassName = () => `__${Math.random()
+    .toString(36)
+    .substring(2)}_${Math.random()
+    .toString(36)
+    .substring(2)}`
+
+const classnames = {
+    aside: getClassName(),
+    body: getClassName(),
+    container: getClassName(),
+    day: getClassName(),
+    grid: getClassName(),
+    header: getClassName(),
+    headerHour: getClassName(),
+    hour: getClassName(),
+    input: getClassName(),
+    node: getClassName(),
+    row: getClassName(),
+    selected: getClassName(),
+}
+
+const css = `
+    @import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap&subset=cyrillic');
+
+    .${classnames.node} {
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .${classnames.container} {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+
+        box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .17);
+        background-color: #FFFFFF;
+        z-index: 100;
+
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        border: 1px solid #EEEEEE;
+        border-radius: 2px;
+    }
+
+    .${classnames.aside} {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        -o-flex-direction: column;
+        flex-direction: column;
+
+        flex-shrink: 0;
+
+        -ms-align-items: center;
+        align-items: center;
+        min-width: 100px;
+
+        padding-top: 26px;
+
+        background-color: #EFEFEF;
+        border-right: 1px solid #CCCCCC;
+    }
+
+    .${classnames.grid} {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+
+        flex-grow: 1;
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        -o-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .${classnames.header} {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+
+        height: 26px;
+
+        border-bottom: 1px solid #CCCCCC;
+
+        flex-shrink: 0;
+        background-color: #F5F5F5;
+    }
+
+    .${classnames.headerHour} {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+
+        -ms-align-items: center;
+        align-items: center;
+        height: 100%;
+        width: 26px;
+        justify-content: center;
+
+        cursor: pointer;
+
+        color: #777777;
+
+        font-size: 12px;
+    }
+
+    .${classnames.headerHour}:not(:last-child) {
+        border-right: 1px solid #CCCCCC;
+    }
+
+    .${classnames.body} {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        -o-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .${classnames.day} {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+
+        color: #444444;
+
+        height: 26px;
+        -ms-align-items: center;
+        align-items: center;
+
+
+        width: 100%;
+        justify-content: center;
+
+        cursor: pointer;
+    }
+
+    .${classnames.day}:first-child {
+        border-top: 1px solid transparent;
+    }
+
+    .${classnames.day}:not(:last-child) {
+        border-bottom: 1px solid #CCC;
+    }
+
+    .${classnames.row} {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+
+        height: 26px;
+        -ms-align-items: center;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .${classnames.row}:not(:last-child) {
+        border-bottom: 1px solid #DDDDDD;
+    }
+
+    .${classnames.hour} {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+
+        -ms-align-items: center;
+        align-items: center;
+        height: 100%;
+        width: 26px;
+        justify-content: center;
+
+        cursor: pointer;
+
+        color: #555555;
+        font-size: 12px;
+    }
+
+    .${classnames.hour}:hover {
+        background-color: #EEEEEE;
+    }
+
+    .${classnames.hour}:not(:last-child) {
+        border-right: 1px solid #DDDDDD;
+    }
+
+    .${classnames.selected}, .${classnames.selected}:hover {
+        background-color: #DDDDDD;
+        color: #333333;
+        font-weight: 500;
+    }
+
+    .${classnames.input} {
+        visibility: hidden;
+        width: 0;
+        height: 0;
+    }
+`
+
 const library = (node, props, callback = () => {}, options = {}) => {
+    const style = document.createElement('style')
+
+    style.type = 'text/css'
+    style.innerHTML = css
+
+    document.getElementsByTagName('head')[0].appendChild(style)
+
     if (!node) {
         throw new Error('Node element is not defined')
     }
@@ -36,19 +278,21 @@ const library = (node, props, callback = () => {}, options = {}) => {
         mapState: (state) => state,
 
         render: () => {},
+
+        input: null,
     }
 
     factory.getAside = () => {
         const element = document.createElement('div')
 
-        element.classList.add('week__hours__picker_aside')
+        element.classList.add(classnames.aside)
 
         Object.keys(factory.options.days)
             .map((key) => factory.options.days[key])
             .forEach((day, index) => {
                 const dayElement = document.createElement('div')
 
-                dayElement.classList.add('week__hours__picker_day')
+                dayElement.classList.add(classnames.day)
                 dayElement.innerHTML = day
 
                 dayElement.addEventListener('click', () => {
@@ -64,7 +308,7 @@ const library = (node, props, callback = () => {}, options = {}) => {
     factory.getBody = () => {
         const element = document.createElement('div')
 
-        element.classList.add('week__hours__picker_body')
+        element.classList.add(classnames.body)
 
         Object.keys(factory.options.days).forEach((index) => {
             element.appendChild(factory.getRow(index))
@@ -76,7 +320,7 @@ const library = (node, props, callback = () => {}, options = {}) => {
     factory.getContainer = () => {
         const element = document.createElement('div')
 
-        element.classList.add('week__hours__picker_container')
+        element.classList.add(classnames.container)
 
         element.append(factory.getAside())
         element.append(factory.getGrid())
@@ -87,7 +331,7 @@ const library = (node, props, callback = () => {}, options = {}) => {
     factory.getGrid = () => {
         const element = document.createElement('div')
 
-        element.classList.add('week__hours__picker_grid')
+        element.classList.add(classnames.grid)
 
         element.appendChild(factory.getHeader())
         element.appendChild(factory.getBody())
@@ -98,12 +342,12 @@ const library = (node, props, callback = () => {}, options = {}) => {
     factory.getHeader = () => {
         const element = document.createElement('div')
 
-        element.classList.add('week__hours__picker_header')
+        element.classList.add(classnames.header)
 
         for (let i = 0; i < 24; i++) {
-            const hour = document.createElement('div')
+            const hour = document.createElement('span')
 
-            hour.classList.add('week__hours__picker_header-hour')
+            hour.classList.add(classnames.headerHour)
             hour.innerHTML = i
 
             hour.addEventListener('click', () => {
@@ -120,15 +364,15 @@ const library = (node, props, callback = () => {}, options = {}) => {
         const { state } = factory
         const element = document.createElement('div')
 
-        element.classList.add('week__hours__picker_row')
+        element.classList.add(classnames.row)
 
         for (let i = 0; i < 24; i++) {
-            const hour = document.createElement('div')
+            const hour = document.createElement('span')
 
-            hour.classList.add('week__hours__picker_hour')
+            hour.classList.add(classnames.hour)
 
             if (state[index] && state[index].includes(i)) {
-                hour.classList.add('week__hours__picker_hour___selected')
+                hour.classList.add(classnames.selected)
             }
 
             hour.innerHTML = i
@@ -271,23 +515,27 @@ const library = (node, props, callback = () => {}, options = {}) => {
 
         DOM = _
 
-        factory.input.setAttribute('value', JSON.stringify(state))
+        if (factory.input) {
+            factory.input.setAttribute('value', JSON.stringify(state))
+        }
 
         callback(factory.mapState(factory.state))
     }
 
-    node.classList.add('week__hours__picker_node')
+    node.classList.add(classnames.node)
 
     node.innerHTML = ''
     node.appendChild(DOM)
 
-    factory.input = document.createElement('input')
-    factory.input.classList.add('week__hours__picker_input')
-    factory.input.setAttribute('id', node.dataset.name)
+    if (node.dataset.name) {
+        factory.input = document.createElement('input')
+        factory.input.classList.add(classnames.input)
 
-    node.appendChild(factory.input)
+        factory.input.setAttribute('id', node.dataset.name)
+        node.appendChild(factory.input)
 
-    factory.input.setAttribute('value', JSON.stringify(factory.mapState(factory.state)))
+        factory.input.setAttribute('value', JSON.stringify(factory.mapState(factory.state)))
+    }
 }
 
 try {
