@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 .week__hours__picker_node {
-    width: 0;
-    height: 0;
-    overflow: hidden;
-
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .week__hours__picker_container {
@@ -16,9 +20,7 @@
     display: -o-flex;
     display: flex;
 
-    position: absolute;
-    min-width: calc(24px * 26px + 100px);
-    height: calc(8 * 26px);
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .17);
     background-color: #FFFFFF;
     z-index: 100;
 
@@ -27,6 +29,8 @@
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+    border: 1px solid #EEEEEE;
+    border-radius: 2px;
 }
 
 .week__hours__picker_aside {
@@ -49,6 +53,9 @@
     min-width: 100px;
 
     padding-top: 26px;
+
+    background-color: #EFEFEF;
+    border-right: 1px solid #CCCCCC;
 }
 
 .week__hours__picker_grid {
@@ -59,7 +66,6 @@
     display: flex;
 
     flex-grow: 1;
-    outline: 1px solid green;
     -webkit-flex-direction: column;
     -moz-flex-direction: column;
     -ms-flex-direction: column;
@@ -75,6 +81,11 @@
     display: flex;
 
     height: 26px;
+
+    border-bottom: 1px solid #CCCCCC;
+
+    flex-shrink: 0;
+    background-color: #F5F5F5;
 }
 
 .week__hours__picker_header-hour {
@@ -87,11 +98,18 @@
     -ms-align-items: center;
     align-items: center;
     height: 100%;
-    outline: 1px solid green;
     width: 26px;
     justify-content: center;
 
     cursor: pointer;
+
+    color: #777777;
+
+    font-size: 12px;
+}
+
+.week__hours__picker_header-hour:not(:last-child) {
+    border-right: 1px solid #CCCCCC;
 }
 
 .week__hours__picker_body {
@@ -115,18 +133,25 @@
     display: -o-flex;
     display: flex;
 
-    color: #333;
+    color: #444444;
 
     height: 26px;
     -ms-align-items: center;
     align-items: center;
 
 
-    outline: 1px solid blue;
     width: 100%;
     justify-content: center;
 
     cursor: pointer;
+}
+
+.week__hours__picker_day:first-child {
+    border-top: 1px solid transparent;
+}
+
+.week__hours__picker_day:not(:last-child) {
+    border-bottom: 1px solid #CCC;
 }
 
 .week__hours__picker_row {
@@ -141,6 +166,9 @@
     align-items: center;
 }
 
+.week__hours__picker_row:not(:last-child) {
+    border-bottom: 1px solid #EEEEEE;
+}
 
 .week__hours__picker_hour {
     display: -webkit-flex;
@@ -152,15 +180,21 @@
     -ms-align-items: center;
     align-items: center;
     height: 100%;
-    outline: 1px solid red;
     width: 26px;
     justify-content: center;
 
     cursor: pointer;
+
+    color: #555555;
+    font-size: 12px;
+}
+
+.week__hours__picker_hour:not(:last-child) {
+    border-right: 1px solid #EEEEEE;
 }
 
 .week__hours__picker_hour___selected {
-    background-color: red;
+    background-color: #DDDDDD;
 }
 
 .week__hours__picker_input {

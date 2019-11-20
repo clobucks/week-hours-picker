@@ -246,6 +246,8 @@
         }
 
         node.classList.add('week__hours__picker_node')
+
+        node.innerHTML = ''
         node.appendChild(DOM)
 
         factory.input = document.createElement('input')
