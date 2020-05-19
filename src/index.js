@@ -539,7 +539,7 @@ const library = (node, props, callback = () => {}, options = {}) => {
     }
 
     factory.getState = (state) => Array.from(
-        { length: Object.keys(factory.options.days).length + 1 },
+        { length: Object.keys(factory.options.days).length },
         (_, index) => index,
     ).reduce(
         (result, index) => ({
